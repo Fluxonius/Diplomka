@@ -1,0 +1,59 @@
+\input{000}
+
+\input{dane-o-pracy}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\listoffigures
+
+    \listof{listing}{Spis listingów}
+
+\listoftables
+
+% --- Strona ze streszczeniem i abstraktem ------------------------------------------------------------------
+\input{streszczenie}
+
+
+% Kilka sztuczek, żeby:
+% - Abstract pojawił się na tej samej stronie co Streszczenie
+% - Abstract nie pojawił się w spisie treści
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+\begingroup
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+\input{abstract}
+\endgroup
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+
+% --- Koniec strony ze streszczeniem i abstraktem -----------------------------------------------------------
+
+
+% Rozdział dołączony z zewnątrz
+\input{wstep}
+
+\input{rozdzial-1}
+
+\input{rozdzial-2}
+
+
+\input{zz}
+
+\appendixpage
+\appendix
+%\addappheadtotoc
+
+\chapter{To powinien być dodatek}\label{Dod1}
+
+\lipsum[9-11]
+
+% W pracy pojawią się tylko prace naprawdę cytowane.
+% \nocite{*}
+
+\bibliography{literatura}
+\bibliographystyle{helpers/dyplom}
+
+\end{document}
